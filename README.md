@@ -1,64 +1,44 @@
-## pytorch Classify Scene Images (Multi-Instance Multi-Label problem)
+# Instruction Of Running The Code
 
-The objective of this study is to develop a deep learning model that 
-will identify the natural scenes from images. This type of problem comes
-under multi label image classification where an instance can be 
-classified into multiple classes among the predefined classes. 
+*File using:
+	5329assn2.ipynb
+	train.csv
+	test.csv
+	kaggle.json (details in STEP 2)
 
-## Dataset
+## STEP 1 : Mount Google Drive
+* If using Colab, plese amount Google Drive in the First cell of 5329assn2.ipynb.
 
-The Complete dataset description can be found on http://lamda.nju.edu.cn/data_MIMLimage.ashx
+## STEP 2 : Load Data and CSV
 
-The processed data is their in the repo  [Image_data.zip](./image_scene_data.zip)
+* To use Colab, run the 2-nd and 3-rd cells. In the 3-rd cell, upload your Kaggle account's kaggle.json file (Kaggle's token file, obtain from Kaggle->Account->API->"Create New Token API"). And in the 4-th cell (with "Please upload fixed train.csv and test.csv"), upload the fixed 'trina.csv', 'test.csv'. All this fill will be put into PATH : 'content/'
 
-## Data Description
+* To use other softwares, change the file path in **download data from kaggle server with token file** section. Change the data_root_dir to the PATH that contains dataset images. And upload fixed 'trina.csv', 'test.csv' files to the running dirctory of this Notebook. (use 'pwd' command in a new cell to check in Notebook).
 
-The image data set consists of 2,000 natural scene images, where a set of labels is artificially assigned to each image. The number of images belonging to more than one class (e.g. *sea+sunset*). On average, each image is associated with 1.24 class labels.
+## STEP 3 : Create colums for each class
+* run cell in **create colums for each class**
 
+## STEP 4 : Class distribution observation
+* run cell in **Class distribution observation**
 
+## STEP 4 : Class distribution observation
+* run cell in **Class distribution observation**
 
-The `labels.json` file contains the labels in the form of list [1 -1 -1 1 -1], it means that the i-th  image belongs to the 1st and 4th classes but do not belong to the 2nd,  3rd and 5th classes. The following is the order of classes **desert, mountains, sea, sunset, trees**
+## STEP 5 : ImageDataset class definition
+* run cell in **ImageDataset class definition**
 
-## Table of Content 
+## STEP 6 : TestDataset class definition
+* run cell in **TestDataset class definition**
 
-1. Download Data
+## STEP 7 : Using ASL
+* run cell in **Using ASL**
 
-2. Structure the data
+## STEP 8 : Define resenet_50 class
+* run cell in **Define resenet_50 class**
 
-3. Visulaize the data
-	1. Data distribution
-	2. Correlation between different classes
-	3. Visualize images
-4. Create Data pipeline
-5. Model Definition (RESNET50)
-6. Optimizer(Adam) and Criterion (nn.BCEWithLogitsLoss)
-7. Training
-8. Saving & Loading model
-9. Model Finetuning
-	1. LrFinder and One Cycle Policy
-	2. unfreeze 60 % architecture and retrain
-	3. unfreeze 70% model and retrain
+## STEP 9 : Train model and predict test
+* run cell in **Train and predict**
 
-10 . Visualizing some end result
+## STEP 10 : Save and download model
+* run cell in **Save and download model**
 
-## Metric Used
-
-1. Precision Score 
-2. F1 score
-
-Note:- Refer sklearn doc for deeper understanding of the metric
-
-# Training
-
-As this is multi label image classification, the loss function was  binary crossentropy logit and activation function used was sigmoid at the  output layer. so after training there is one probabilistic threshold method which  find out the best threshold value for each label seperately and based on the threshold value(0.5)
-
-```python
-preds = torch.sigmoid(output).data > 0.5
-preds = preds.to(torch.float32)
-```
-
-## Final Result
-
-F1 score| Loss
-----------|-----------
-88.85%|0.1962

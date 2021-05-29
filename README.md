@@ -15,6 +15,9 @@
 
 * To use other softwares, change the file path in **download data from kaggle server with token file** section. Change the data_root_dir to the PATH that contains dataset images. And upload fixed 'trina.csv', 'test.csv' files to the running dirctory of this Notebook. (use 'pwd' command in a new cell to check in Notebook).
 
+###### For following steps (STEP 3 to STEP 10), to be simplify:
+###### You can directly run all cell after 4-th cell, until the last cell of the 5329assn2.ipynb
+
 ## STEP 3 : Create colums for each class
 * run cell in **create colums for each class**
 

@@ -43,4 +43,5 @@
 
 ## STEP 10 : Save and download model
 * run cell in **Save and download model**
+* You can check the model's size by take a look at the output file "my_model_save1.pth"
 
